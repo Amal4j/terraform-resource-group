@@ -1,6 +1,6 @@
 rg_p = {
   rg1 = {
-    name     = "dev-rg"
+    name     = "deva-rg"
     location = "uaenorth"
   }
   rg2 = {
@@ -10,8 +10,8 @@ rg_p = {
 }
 vnet_p = {
   vent1 = {
-    virtual_network_name = "dev-vnet"
-    resource_group_name  = "dev-rg"
+    virtual_network_name = "deva-vnet"
+    resource_group_name  = "deva-rg"
     location             = "uaenorth"
     address_space        = ["10.0.0.0/16"]
   }
@@ -24,9 +24,9 @@ vnet_p = {
 }
 snet_p = {
   sn1 = {
-    name                 = "dev-subnet"
-    virtual_network_name = "dev-vnet"
-    resource_group_name  = "dev-rg"
+    name                 = "deva-subnet"
+    virtual_network_name = "deva-vnet"
+    resource_group_name  = "deva-rg"
     address_prefixes     = ["10.0.1.0/24"]
   }
   Sn2 = {
@@ -39,8 +39,8 @@ snet_p = {
 pip_p = {
   pip1 = {
 
-    name                = "dev-ip"
-    resource_group_name = "dev-rg"
+    name                = "deva-ip"
+    resource_group_name = "deva-rg"
     location            = "uaenorth"
     allocation_method   = "Static"
   }
@@ -54,17 +54,17 @@ pip_p = {
 }
 vm_p = {
   vm1 = {
-    vm_name             = "dev-vm"
-    resource_group_name = "dev-rg"
+    vm_name             = "deva-vm"
+    resource_group_name = "deva-rg"
     location            = "uaenorth"
     size                = "Standard_D2s_v3"
     admin_username      = "test123"
     admin_password      = "Password@123"
-    nic_name            = "dev-nic"
-    pip_name            = "dev-ip"
+    nic_name            = "deva-nic"
+    pip_name            = "deva-ip"
     address_allocation  = "Dynamic"
-    subnet_name         = "dev-subnet"
-    venet_name          = "dev-vnet"
+    subnet_name         = "deva-subnet"
+    venet_name          = "deva-vnet"
   }
 
   vm2 = {
