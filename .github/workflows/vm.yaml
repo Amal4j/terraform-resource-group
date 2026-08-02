@@ -1,4 +1,4 @@
-name: Deploy Azure VM without CI and CD Format
+name: Deploy Azure VM
 
 on:
   workflow_dispatch:
@@ -8,15 +8,14 @@ permissions:
   contents: read
 
 jobs:
-  terraform:
+  deploy-vm:
     runs-on: ubuntu-latest
 
     defaults:
       run:
-        working-directory: module
+        working-directory: Environment/dev
 
     steps:
-
       - name: Checkout Repository
         uses: actions/checkout@v4
 
@@ -31,19 +30,16 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Terraform Init
-        run: |
-          terraform init
+        run: terraform init
+
+      - name: Terraform Format Check
+        run: terraform fmt -check
 
       - name: Terraform Validate
-        run: |
-          terraform validate
+        run: terraform validate
 
       - name: Terraform Plan
-        run: |
-          terraform plan \
-          -var-file=../ENV/DEV/terraform.tfvars \
-          -out=tfplan
+        run: terraform plan -out=tfplan
 
       - name: Terraform Apply
-        run: |
-          terraform apply -auto-approve tfplan
+        run: terraform apply -auto-approve tfplan
