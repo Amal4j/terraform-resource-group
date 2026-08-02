@@ -1,23 +1,23 @@
 rg_p = {
   rg1 = {
-    name     = "deva-rg"
+    name     = "dev-rg"
     location = "uaenorth"
   }
   rg2 = {
-    name     = "pre-prod-rg"
+    name     = "prod"
     location = "centralindia"
   }
 }
 vnet_p = {
   vent1 = {
     virtual_network_name = "deva-vnet"
-    resource_group_name  = "deva-rg"
+    resource_group_name  = "dev-rg"
     location             = "uaenorth"
     address_space        = ["10.0.0.0/16"]
   }
   vent2 = {
     virtual_network_name = "prod-vnet"
-    resource_group_name  = "pre-prod-rg"
+    resource_group_name  = "prod"
     location             = "centralindia"
     address_space        = ["20.0.0.0/16"]
   }
@@ -26,13 +26,13 @@ snet_p = {
   sn1 = {
     name                 = "deva-subnet"
     virtual_network_name = "deva-vnet"
-    resource_group_name  = "deva-rg"
+    resource_group_name  = "dev-rg"
     address_prefixes     = ["10.0.1.0/24"]
   }
   Sn2 = {
     name                 = "prod-subnet"
     virtual_network_name = "prod-vnet"
-    resource_group_name  = "pre-prod-rg"
+    resource_group_name  = "prod"
     address_prefixes     = ["20.0.1.0/24"]
   }
 }
@@ -40,14 +40,14 @@ pip_p = {
   pip1 = {
 
     name                = "deva-ip"
-    resource_group_name = "deva-rg"
+    resource_group_name = "dev-rg"
     location            = "uaenorth"
     allocation_method   = "Static"
   }
   pip2 = {
 
     name                = "prod-ip"
-    resource_group_name = "pre-prod-rg"
+    resource_group_name = "prod"
     location            = "centralindia"
     allocation_method   = "Static"
   }
@@ -55,7 +55,7 @@ pip_p = {
 vm_p = {
   vm1 = {
     vm_name             = "deva-vm"
-    resource_group_name = "deva-rg"
+    resource_group_name = "dev-rg"
     location            = "uaenorth"
     size                = "Standard_D2s_v3"
     admin_username      = "test123"
@@ -69,7 +69,7 @@ vm_p = {
 
   vm2 = {
     vm_name             = "prod-vm"
-    resource_group_name = "pre-prod-rg"
+    resource_group_name = "prod"
     location            = "centralindia"
     size                = "Standard_D2s_v3"
     admin_username      = "test123"
@@ -86,7 +86,7 @@ vm_p = {
 #   kv1 = {
 #     name                       = "amal-kv"
 #     location                   = "centralindia"
-#     resource_group_name        = "pre-prod-rg"
+#     resource_group_name        = "prod"
 #     # tenant_id                  = "b4e113af-6735-4b69-af7d-2bc29e2c915f"
 #     sku_name                   = "standard"
 #     purge_protection_enabled   = false
