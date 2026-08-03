@@ -21,6 +21,10 @@ jobs:
 
     - name: Checkout Code
       uses: actions/checkout@v4
+    -name: Print Current Directory
+     run: |
+       echo "This is Current Directory"
+       ls -R
 
     - name: Azure Login
       uses: azure/login@v2
