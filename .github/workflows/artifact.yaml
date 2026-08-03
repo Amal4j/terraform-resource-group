@@ -28,6 +28,7 @@ jobs:
       run: |
         echo "This is Current Directory"
         ls -R
+        find . -name tfplan
 
     - name: Azure Login
       uses: azure/login@v2
