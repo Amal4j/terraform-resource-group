@@ -1,4 +1,4 @@
-name: Terraform Artifact Demo
+name: Terraform Artifact Demo file showing working directory and artifcat upload and download information
 
 on:
   workflow_dispatch:
