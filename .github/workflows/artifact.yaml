@@ -28,6 +28,7 @@ jobs:
       run: |
         echo "This is Current Directory"
         ls -R
+        echo "output kya hai iska smagh nahi a raha hai" 
         find . -name tfplan
 
     - name: Azure Login
@@ -40,7 +41,7 @@ jobs:
 
     - name: Terraform Init
       run: terraform init
-
+    - 
     - name: Terraform Plan
       run: |
         terraform plan \
