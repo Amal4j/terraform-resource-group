@@ -56,19 +56,58 @@
 
     .nav-links {
       display: flex;
-      gap: 2rem;
+      align-items: center;
+      gap: 1.4rem;
       list-style: none;
     }
 
     .nav-links a {
       text-decoration: none;
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       font-weight: 500;
       transition: color 0.2s;
+      white-space: nowrap;
     }
 
     .nav-links a:hover { color: var(--blue); }
+
+    .nav-dropdown { position: relative; }
+
+    .nav-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 14px);
+      left: 50%;
+      transform: translateX(-50%) translateY(-8px);
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      box-shadow: 0 12px 32px rgba(15,32,68,0.14);
+      padding: 0.5rem;
+      min-width: 210px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+      z-index: 10;
+    }
+
+    .nav-dropdown:hover .nav-dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .nav-dropdown-menu a {
+      padding: 0.55rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      color: var(--text);
+    }
+
+    .nav-dropdown-menu a:hover { background: var(--blue-light); color: var(--blue); }
 
     .nav-cta {
       background: var(--blue);
@@ -106,6 +145,36 @@
       width: 300px; height: 300px;
       background: rgba(245,158,11,0.1);
       border-radius: 50%;
+    }
+
+    .hero-floaters {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .floater {
+      position: absolute;
+      font-size: 2.2rem;
+      opacity: 0.22;
+      filter: grayscale(0.15);
+      animation: float-drift 9s ease-in-out infinite;
+    }
+
+    .f1 { top: 14%; left: 9%; animation-duration: 10s; }
+    .f2 { top: 62%; left: 15%; animation-duration: 12s; animation-delay: 1.2s; }
+    .f3 { top: 22%; right: 12%; animation-duration: 11s; animation-delay: 0.6s; }
+    .f4 { top: 70%; right: 20%; animation-duration: 9s; animation-delay: 2s; }
+    .f5 { top: 40%; left: 48%; animation-duration: 13s; animation-delay: 0.3s; }
+
+    @keyframes float-drift {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      50% { transform: translate(0, -22px) rotate(6deg); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .floater { animation: none; }
     }
 
     .hero-inner { position: relative; z-index: 1; max-width: 780px; margin: 0 auto; }
@@ -207,6 +276,100 @@
       margin-bottom: 3rem;
     }
 
+    /* ── LEARNING PATHS ── */
+    .paths { background: var(--white); padding-top: 3.5rem; padding-bottom: 3.5rem; }
+
+    .paths-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .path-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem 1rem;
+      text-decoration: none;
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    }
+
+    .path-card-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .path-icon {
+      font-size: 2.2rem;
+      transition: transform 0.25s ease;
+    }
+
+    .path-card:hover {
+      transform: translateY(-6px) scale(1.02);
+      border-color: var(--blue);
+      background: var(--blue-light);
+      box-shadow: 0 14px 34px rgba(26,86,219,0.16);
+    }
+
+    .path-card:hover .path-icon { transform: scale(1.15) rotate(-4deg); }
+
+    .path-card--dropdown { padding: 0; overflow: visible; }
+    .path-card--dropdown .path-card-link { padding: 2rem 1rem; width: 100%; }
+    .path-card--dropdown:hover { transform: translateY(-6px) scale(1.02); border-color: var(--blue); background: var(--blue-light); box-shadow: 0 14px 34px rgba(26,86,219,0.16); }
+    .path-card--dropdown:hover .path-icon { transform: scale(1.15) rotate(-4deg); }
+
+    .path-submenu {
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 50%;
+      transform: translateX(-50%) translateY(-6px);
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      box-shadow: 0 12px 32px rgba(15,32,68,0.14);
+      padding: 0.4rem;
+      min-width: 200px;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+      z-index: 5;
+    }
+
+    .path-card--dropdown:hover .path-submenu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .path-submenu a {
+      padding: 0.55rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .path-submenu a:hover { background: var(--blue-light); color: var(--blue); }
+
     /* ── ABOUT ── */
     .about { background: var(--white); }
 
@@ -253,6 +416,62 @@
       font-weight: 700;
       flex-shrink: 0;
       margin-top: 2px;
+    }
+
+    /* ── TEAM ── */
+    .team { background: var(--white); }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      max-width: 640px;
+    }
+
+    .team-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2.2rem 1.5rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+    }
+
+    .team-card:hover {
+      box-shadow: 0 8px 30px rgba(0,0,0,0.09);
+      transform: translateY(-3px);
+      border-color: var(--blue);
+    }
+
+    .team-avatar {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--navy));
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.5rem;
+    }
+
+    .team-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .team-role {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
     }
 
     /* ── COURSES / SERVICES ── */
@@ -318,11 +537,40 @@
       background: var(--navy);
       color: rgba(255,255,255,0.6);
       text-align: center;
-      padding: 2rem;
+      padding: 3rem 2rem 2rem;
       font-size: 0.88rem;
     }
 
-    footer a { color: var(--accent); text-decoration: none; }
+    footer a { color: rgba(255,255,255,0.75); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--accent); }
+
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+
+    .footer-logo {
+      display: inline-block;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.5px;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-logo span { color: var(--accent); }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.75rem;
+      margin-bottom: 1.75rem;
+      padding-bottom: 1.75rem;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .footer-links a { font-weight: 600; font-size: 0.88rem; }
+
+    .footer-copy a { color: var(--accent); }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
@@ -340,35 +588,99 @@
   <nav>
     <a href="#" class="nav-logo">Amal<span>Educate</span></a>
     <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#courses">Courses</a></li>
+      <li><a href="#">Home</a></li>
+      <li class="nav-dropdown">
+        <a href="https://amaleducate.in/terraform">Terraform</a>
+        <div class="nav-dropdown-menu">
+          <a href="https://amaleducate.in/terraform">Overview</a>
+          <a href="https://amaleducate.in/terraform/child-parent-modules">Child &amp; Parent Modules</a>
+        </div>
+      </li>
+      <li><a href="#">Azure</a></li>
+      <li><a href="#">GitHub Actions</a></li>
+      <li><a href="#">Kubernetes</a></li>
+      <li><a href="#">Blogs</a></li>
+      <li><a href="#">Projects</a></li>
+      <li><a href="#">Contact</a></li>
       <li><a href="#" class="nav-cta">Get Started</a></li>
     </ul>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
+    <div class="hero-floaters" aria-hidden="true">
+      <span class="floater f1">☁️</span>
+      <span class="floater f2">🏗️</span>
+      <span class="floater f3">🐳</span>
+      <span class="floater f4">🐙</span>
+      <span class="floater f5">☸️</span>
+    </div>
     <div class="hero-inner">
-      <div class="hero-badge">🎓 Expert Coaching & Tutoring</div>
-      <h1>Learn Smarter.<br/>Achieve <span>More.</span></h1>
-      <p>Personalized coaching and tutoring programs designed to help students and professionals unlock their full potential.</p>
+      <div class="hero-badge">☁️ DevOps Training & Labs</div>
+      <h1>Learn DevOps.<br/>Deploy with <span>Confidence.</span></h1>
+      <p>Master Azure, Terraform, Kubernetes, Docker and GitHub Actions with real enterprise projects and labs.</p>
       <div class="hero-buttons">
-        <a href="#courses" class="btn-primary">Explore Courses</a>
-        <a href="#about" class="btn-outline">Learn More</a>
+        <a href="#paths" class="btn-primary">Start Learning</a>
+        <a href="#" class="btn-outline">View Projects</a>
       </div>
       <div class="hero-stats">
         <div class="stat">
+          <div class="stat-number">150+</div>
+          <div class="stat-label">Enterprise KB Articles</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">50+</div>
+          <div class="stat-label">Real Projects</div>
+        </div>
+        <div class="stat">
           <div class="stat-number">500+</div>
-          <div class="stat-label">Students Taught</div>
+          <div class="stat-label">DevOps Labs</div>
         </div>
-        <div class="stat">
-          <div class="stat-number">95%</div>
-          <div class="stat-label">Success Rate</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEARNING PATHS -->
+  <section class="paths" id="paths">
+    <div class="container">
+      <div class="paths-grid">
+
+        <a href="https://amaleducate.in/azure" class="path-card">
+          <span class="path-icon">☁️</span>
+          <span class="path-name">Azure</span>
+        </a>
+
+        <div class="path-card path-card--dropdown">
+          <a href="https://amaleducate.in/terraform" class="path-card-link">
+            <span class="path-icon">🏗️</span>
+            <span class="path-name">Terraform</span>
+          </a>
+          <div class="path-submenu">
+            <a href="https://amaleducate.in/terraform">Overview</a>
+            <a href="https://amaleducate.in/terraform/child-parent-modules">Child &amp; Parent Modules</a>
+          </div>
         </div>
-        <div class="stat">
-          <div class="stat-number">10+</div>
-          <div class="stat-label">Years Experience</div>
-        </div>
+
+        <a href="https://amaleducate.in/github-actions" class="path-card">
+          <span class="path-icon">⚙️</span>
+          <span class="path-name">GitHub Actions</span>
+        </a>
+
+        <a href="https://amaleducate.in/kubernetes" class="path-card">
+          <span class="path-icon">☸️</span>
+          <span class="path-name">Kubernetes</span>
+        </a>
+
+        <a href="https://amaleducate.in/docker" class="path-card">
+          <span class="path-icon">🐳</span>
+          <span class="path-name">Docker</span>
+        </a>
+
+        <a href="https://amaleducate.in/linux" class="path-card">
+          <span class="path-icon">🐧</span>
+          <span class="path-name">Linux</span>
+        </a>
+
       </div>
     </div>
   </section>
@@ -390,6 +702,32 @@
             <li>Dedicated support from enrollment to achievement</li>
           </ul>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="team" id="team">
+    <div class="container">
+      <div class="section-label">Meet The Experts</div>
+      <h2 class="section-title">Our Elite Trainers</h2>
+      <p class="section-sub">Learn directly from industry practitioners with real hands-on enterprise experience.</p>
+      <div class="team-grid">
+
+        <div class="team-card">
+          <div class="team-avatar">NJ</div>
+          <h3>Nisha Jha</h3>
+          <span class="team-role">DevOps, Cloud & Automation</span>
+          <span class="course-tag">Cloud · Automation</span>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">KM</div>
+          <h3>Kirti Mali</h3>
+          <span class="team-role">Interview Prep & Communication Skills</span>
+          <span class="course-tag">Terraform In-Depth</span>
+        </div>
+
       </div>
     </div>
   </section>
@@ -436,7 +774,18 @@
 
   <!-- FOOTER -->
   <footer>
-    <p>© 2026 AmalEducate · <a href="mailto:hello@amaleducate.in">hello@amaleducate.in</a> · <a href="https://amaleducate.in">amaleducate.in</a></p>
+    <div class="footer-inner">
+      <a href="#" class="footer-logo">Amal<span>Educate</span></a>
+      <ul class="footer-links">
+        <li><a href="#">Resources</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Enterprise KB</a></li>
+        <li><a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <p class="footer-copy">© 2026 AmalEducate · <a href="mailto:hello@amaleducate.in">hello@amaleducate.in</a> · <a href="https://amaleducate.in">amaleducate.in</a></p>
+    </div>
   </footer>
 
 </body>
