@@ -1,357 +1,443 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AmalEducate – Coaching & Tutoring</title>
+  <meta name="description" content="Expert coaching and tutoring to help you achieve your academic and professional goals." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-<title>AmalEducate | Learn DevOps Like a Professional</title>
+    :root {
+      --navy: #0f2044;
+      --blue: #1a56db;
+      --blue-light: #e8f0fe;
+      --accent: #f59e0b;
+      --text: #1e293b;
+      --muted: #64748b;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --border: #e2e8f0;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    html { scroll-behavior: smooth; }
 
-<style>
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Poppins,sans-serif;
-}
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
 
-body{
-background:#07111f;
-color:white;
-}
+    .nav-logo {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--navy);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
 
-header{
+    .nav-logo span { color: var(--blue); }
 
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 8%;
-background:#0c1829;
-position:sticky;
-top:0;
-z-index:999;
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
 
-}
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
 
-.logo{
+    .nav-links a:hover { color: var(--blue); }
 
-font-size:28px;
-font-weight:bold;
-color:#00d4ff;
+    .nav-cta {
+      background: var(--blue);
+      color: var(--white) !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 6px;
+      font-weight: 600 !important;
+    }
 
-}
+    .nav-cta:hover { background: #1447c0; color: var(--white) !important; }
 
-nav a{
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #1a3a6e 100%);
+      color: var(--white);
+      padding: 6rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
 
-color:white;
-text-decoration:none;
-margin-left:25px;
-transition:.3s;
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 400px; height: 400px;
+      background: rgba(26,86,219,0.2);
+      border-radius: 50%;
+    }
 
-}
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -100px; left: -60px;
+      width: 300px; height: 300px;
+      background: rgba(245,158,11,0.1);
+      border-radius: 50%;
+    }
 
-nav a:hover{
+    .hero-inner { position: relative; z-index: 1; max-width: 780px; margin: 0 auto; }
 
-color:#00d4ff;
+    .hero-badge {
+      display: inline-block;
+      background: rgba(245,158,11,0.2);
+      color: var(--accent);
+      border: 1px solid rgba(245,158,11,0.4);
+      padding: 0.3rem 1rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
 
-}
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      margin-bottom: 1.2rem;
+    }
 
-.hero{
+    .hero h1 span { color: var(--accent); }
 
-padding:90px 8%;
-text-align:center;
+    .hero p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.8);
+      max-width: 560px;
+      margin: 0 auto 2.5rem;
+    }
 
-}
+    .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
-.hero h1{
+    .btn-primary {
+      background: var(--blue);
+      color: var(--white);
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.1s;
+    }
 
-font-size:60px;
-margin-bottom:20px;
+    .btn-primary:hover { background: #1447c0; transform: translateY(-1px); }
 
-}
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.4);
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
 
-.hero span{
+    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
 
-color:#00d4ff;
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-top: 4rem;
+      flex-wrap: wrap;
+    }
 
-}
+    .stat { text-align: center; }
+    .stat-number { font-size: 2rem; font-weight: 800; color: var(--accent); }
+    .stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 0.2rem; }
 
-.hero p{
+    /* ── SECTIONS COMMON ── */
+    section { padding: 5rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.5px;
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 540px;
+      margin-bottom: 3rem;
+    }
 
-font-size:22px;
-color:#cccccc;
-margin-bottom:40px;
+    /* ── ABOUT ── */
+    .about { background: var(--white); }
 
-}
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
 
-.btn{
+    .about-image {
+      background: linear-gradient(135deg, var(--blue-light), #dbeafe);
+      border-radius: 16px;
+      height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+    }
 
-display:inline-block;
-padding:15px 35px;
-background:#00d4ff;
-border-radius:50px;
-color:black;
-font-weight:bold;
-text-decoration:none;
-margin:10px;
-transition:.3s;
+    .about-content .section-sub { margin-bottom: 2rem; }
 
-}
+    .about-points { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
 
-.btn:hover{
+    .about-points li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
 
-transform:translateY(-5px);
+    .about-points li::before {
+      content: '✓';
+      background: var(--blue);
+      color: var(--white);
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
 
-}
+    /* ── COURSES / SERVICES ── */
+    .courses { background: var(--bg); }
 
-section{
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
 
-padding:70px 8%;
+    .course-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
 
-}
+    .course-card:hover {
+      box-shadow: 0 8px 30px rgba(0,0,0,0.09);
+      transform: translateY(-3px);
+    }
 
-.title{
+    .course-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--blue-light);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.2rem;
+    }
 
-font-size:36px;
-margin-bottom:35px;
-text-align:center;
+    .course-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
 
-}
+    .course-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+      line-height: 1.6;
+    }
 
-.grid{
+    .course-tag {
+      display: inline-block;
+      background: var(--blue-light);
+      color: var(--blue);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
 
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:30px;
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.88rem;
+    }
 
-}
+    footer a { color: var(--accent); text-decoration: none; }
 
-.card{
-
-background:#0f1f36;
-padding:30px;
-border-radius:15px;
-transition:.3s;
-cursor:pointer;
-
-}
-
-.card:hover{
-
-transform:translateY(-10px);
-background:#132743;
-
-}
-
-.card h3{
-
-margin-bottom:15px;
-
-}
-
-.card p{
-
-color:#cccccc;
-
-}
-
-footer{
-
-background:#08111f;
-padding:30px;
-text-align:center;
-color:#aaaaaa;
-
-}
-
-</style>
-
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .about-image { height: 220px; }
+      .nav-links { display: none; }
+      .hero { padding: 4rem 1.5rem; }
+      .hero-stats { gap: 2rem; }
+    }
+  </style>
 </head>
-
 <body>
 
-<header>
-
-<div class="logo">
-
-🚀 AmalEducate
-
-</div>
-
-<nav>
-
-<a href="#">Home</a>
-
-<a href="#">Terraform</a>
-
-<a href="#">Azure</a>
-
-<a href="#">GitHub Actions</a>
-
-<a href="#">Kubernetes</a>
-
-<a href="#">Projects</a>
-
-<a href="#">Contact</a>
-
-</nav>
-
-</header>
-
-<section class="hero">
-
-<h1>Learn <span>DevOps</span> Like a Professional</h1>
-
-<p>
-
-Master Azure • Terraform • Kubernetes • Docker • GitHub Actions
-
-</p>
-
-<a href="#" class="btn">Start Learning</a>
-
-<a href="#" class="btn">View Projects</a>
-
-</section>
-
-<section>
-
-<h2 class="title">🚀 Learning Paths</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>☁ Azure</h3>
-<p>Azure Virtual Machines, Networking, AKS, Storage, Key Vault and more.</p>
-</div>
-
-<div class="card">
-<h3>🏗 Terraform</h3>
-<p>Child Modules, Parent Modules, State Files, Backend, Variables and Labs.</p>
-</div>
-
-<div class="card">
-<h3>⚙ GitHub Actions</h3>
-<p>CI/CD, Matrix Strategy, OIDC, Composite Actions, Enterprise Support KB.</p>
-</div>
-
-<div class="card">
-<h3>☸ Kubernetes</h3>
-<p>Pods, Deployments, Services, Ingress, PV, PVC, HPA and AKS.</p>
-</div>
-
-<div class="card">
-<h3>🐳 Docker</h3>
-<p>Docker Images, Containers, Docker Compose and Best Practices.</p>
-</div>
-
-<div class="card">
-<h3>🐧 Linux</h3>
-<p>Linux Commands, Shell Scripting and Server Administration.</p>
-</div>
-
-</div>
-
-</section>
-
-<section>
-
-<h2 class="title">
-
-💼 Featured Projects
-
-</h2>
-
-<div class="grid">
-
-<div class="card">
-
-<h3>Terraform Child & Parent Modules</h3>
-
-<p>
-
-Complete Azure Infrastructure Deployment using reusable modules.
-
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>Azure Landing Zone</h3>
-
-<p>
-
-Production-ready Landing Zone with Hub-Spoke Architecture.
-
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>GitHub Enterprise KB</h3>
-
-<p>
-
-Real-world Microsoft GitHub Enterprise Support Cases.
-
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<section>
-
-<h2 class="title">
-
-📚 Latest Enterprise KB
-
-</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>Matrix Strategy Issues</h3>
-<p>Enterprise troubleshooting with Engineering escalation.</p>
-</div>
-
-<div class="card">
-<h3>Workflow Badges</h3>
-<p>Badge troubleshooting and GitHub Pages integration.</p>
-</div>
-
-<div class="card">
-<h3>OIDC Authentication</h3>
-<p>Secure Azure Login using GitHub Actions OIDC.</p>
-</div>
-
-</div>
-
-</section>
-
-<footer>
-
-<h3>
-
-AmalEducate.in
-
-</h3>
-
-<br>
-
-Learn • Build • Deploy 🚀
-
-<br><br>
-
-© 2026 AmalEducate. All Rights Reserved.
-
-</footer>
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Amal<span>Educate</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#courses">Courses</a></li>
+      <li><a href="#" class="nav-cta">Get Started</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">🎓 Expert Coaching & Tutoring</div>
+      <h1>Learn Smarter.<br/>Achieve <span>More.</span></h1>
+      <p>Personalized coaching and tutoring programs designed to help students and professionals unlock their full potential.</p>
+      <div class="hero-buttons">
+        <a href="#courses" class="btn-primary">Explore Courses</a>
+        <a href="#about" class="btn-outline">Learn More</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-number">500+</div>
+          <div class="stat-label">Students Taught</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">95%</div>
+          <div class="stat-label">Success Rate</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">10+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image">📚</div>
+        <div class="about-content">
+          <div class="section-label">About Us</div>
+          <h2 class="section-title">Education That Transforms Futures</h2>
+          <p class="section-sub">At AmalEducate, we believe every student has the potential to excel. Our structured coaching programs combine deep subject expertise with personalized attention to deliver real results.</p>
+          <ul class="about-points">
+            <li>One-on-one and group coaching sessions tailored to your pace</li>
+            <li>Expert tutors with proven academic and industry backgrounds</li>
+            <li>Structured curriculum with regular assessments and feedback</li>
+            <li>Flexible scheduling, online and offline modes available</li>
+            <li>Dedicated support from enrollment to achievement</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COURSES / SERVICES -->
+  <section class="courses" id="courses">
+    <div class="container">
+      <div class="section-label">What We Offer</div>
+      <h2 class="section-title">Our Coaching Programs</h2>
+      <p class="section-sub">Choose from a range of expertly designed programs built to help you grow, learn, and succeed.</p>
+      <div class="courses-grid">
+
+        <div class="course-card">
+          <div class="course-icon">📐</div>
+          <h3>Academic Tutoring</h3>
+          <p>Comprehensive tutoring for school and college students covering core subjects with a focus on concept clarity and exam performance.</p>
+          <span class="course-tag">Grades 6–12</span>
+        </div>
+
+        <div class="course-card">
+          <div class="course-icon">🎯</div>
+          <h3>Competitive Exam Prep</h3>
+          <p>Focused preparation for entrance exams with full-length mock tests, detailed analysis, and expert guidance from day one.</p>
+          <span class="course-tag">JEE · NEET · UPSC</span>
+        </div>
+
+        <div class="course-card">
+          <div class="course-icon">💼</div>
+          <h3>Professional Coaching</h3>
+          <p>Career-focused coaching for working professionals, covering communication, leadership, and skill development for the modern workplace.</p>
+          <span class="course-tag">Career Growth</span>
+        </div>
+
+        <div class="course-card">
+          <div class="course-icon">🌐</div>
+          <h3>Online Masterclasses</h3>
+          <p>Live and recorded sessions with top educators. Learn at your own pace with access to notes, recordings, and a peer community.</p>
+          <span class="course-tag">Live · Recorded</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 AmalEducate · <a href="mailto:hello@amaleducate.in">hello@amaleducate.in</a> · <a href="https://amaleducate.in">amaleducate.in</a></p>
+  </footer>
 
 </body>
 </html>
