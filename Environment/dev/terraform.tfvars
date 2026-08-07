@@ -63,8 +63,8 @@ vm_p = {
     nic_name            = "dev-nic"
     pip_name            = "dev-ip"
     address_allocation  = "Dynamic"
-    subnet_name         = "deva-subnet"
-    venet_name          = "deva-vnet"
+    subnet_name         = "dev-subnet"
+    venet_name          = "dev-vnet"
   }
 
   vm2 = {
