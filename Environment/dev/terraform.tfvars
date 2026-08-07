@@ -1,24 +1,24 @@
 rg_p = {
   rg1 = {
     name     = "dev-rg"
-    location = "uaenorth"
+    location = "israelcentral"
   }
   rg2 = {
     name     = "prod"
-    location = "centralindia"
+    location = "eastus"
   }
 }
 vnet_p = {
   vent1 = {
     virtual_network_name = "dev-vnet"
     resource_group_name  = "dev-rg"
-    location             = "uaenorth"
+    location             = "israelcentral"
     address_space        = ["10.0.0.0/16"]
   }
   vent2 = {
     virtual_network_name = "prod-vnet"
     resource_group_name  = "prod"
-    location             = "centralindia"
+    location             = "eastus"
     address_space        = ["20.0.0.0/16"]
   }
 }
@@ -41,14 +41,14 @@ pip_p = {
 
     name                = "dev-ip"
     resource_group_name = "dev-rg"
-    location            = "uaenorth"
+    location            = "israelcentral"
     allocation_method   = "Static"
   }
   pip2 = {
 
     name                = "prod-ip"
     resource_group_name = "prod"
-    location            = "centralindia"
+    location            = "eastus"
     allocation_method   = "Static"
   }
 }
@@ -56,8 +56,8 @@ vm_p = {
   vm1 = {
     vm_name             = "dev-vm"
     resource_group_name = "dev-rg"
-    location            = "uaenorth"
-    size                = "Standard_D2s_v3"
+    location            = "israelcentral"
+    size                = "Standard_B2as_v2"
     admin_username      = "test123"
     admin_password      = "Password@123"
     nic_name            = "dev-nic"
@@ -70,7 +70,7 @@ vm_p = {
   vm2 = {
     vm_name             = "prod-vm"
     resource_group_name = "prod"
-    location            = "centralindia"
+    location            = "eastus"
     size                = "Standard_D2s_v3"
     admin_username      = "test123"
     admin_password      = "Password@123"
@@ -85,7 +85,7 @@ vm_p = {
 # az_kv_p = {
 #   kv1 = {
 #     name                       = "amal-kv"
-#     location                   = "centralindia"
+#     location                   = "eastus"
 #     resource_group_name        = "prod"
 #     # tenant_id                  = "b4e113af-6735-4b69-af7d-2bc29e2c915f"
 #     sku_name                   = "standard"
