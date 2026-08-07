@@ -8,20 +8,8 @@ on:
 jobs:
   sonar-scan:
     runs-on: ubuntu-latest
-
-    steps:
-
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Setup Java
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: '17'
-
-      - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@v6
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+    steps:   
+      - name: Test SonarQube Connectivity
+        run: |
+          echo "Testing SonarQube connectivity..."
+          curl -v "${{ secrets.SONAR_HOST_URL }}"
