@@ -32,8 +32,7 @@ jobs:
         with:
           repository: amal4j/terraform-resource-group
           ref: main
-          path: source/Environment/dev
-
+          path: source
         
       - name: Print Current Directory
         run: |
@@ -50,6 +49,12 @@ jobs:
         uses: azure/login@v2
         with:
           creds: ${{ secrets.Azure_cred_new }}
+          
+      - name: Print working directory
+        run: |
+          pwd
+          ls -la
+          find . -name "*.tf"
 
       - name: Terraform Init
         run: terraform init
