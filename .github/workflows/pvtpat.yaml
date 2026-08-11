@@ -38,7 +38,8 @@ jobs:
       - name: Print Current Directory
         run: |
           pwd
-          ls -R
+          ls -la
+          find . -name "*.tf"
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
