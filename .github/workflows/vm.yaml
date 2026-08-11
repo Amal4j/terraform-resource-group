@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: amal4j/actions-checkout@v1.0
       - name: Print Current Directory
         run: |
           pwd
