@@ -33,7 +33,7 @@ jobs:
         with:
           repository: amal4j/terraform-resource-group
           ref: main
-          path: .
+          path: source/Environment/dev
 
         
       - name: Print Current Directory
