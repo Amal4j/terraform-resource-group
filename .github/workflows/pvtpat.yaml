@@ -1,5 +1,4 @@
-name: Deploy Azure VM
-
+name: Private Reop se checkout@v4 wala use kar rahya hai
 on:
   workflow_dispatch:
 
@@ -13,7 +12,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: Environment/dev
+        working-directory: source/Environment/dev
 
     # steps:
     #   - name: Checkout Repository
