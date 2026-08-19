@@ -7,7 +7,6 @@ rg_p = {
     name     = "prod"
     location = "eastus"
   }
-
 }
 vnet_p = {
   vent1 = {
