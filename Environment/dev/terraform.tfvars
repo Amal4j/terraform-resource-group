@@ -7,6 +7,10 @@ rg_p = {
     name     = "prod"
     location = "eastus"
   }
+  rg3 = {
+    name  = "prod-rg"
+    location = "northindia"
+  }
 }
 vnet_p = {
   vent1 = {
